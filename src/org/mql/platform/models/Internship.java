@@ -1,157 +1,203 @@
 package org.mql.platform.models;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * @author mehdithe
+ * @author chermehdi
+ * @author YassirSalih
  */
-
 @Entity
 public class Internship extends Experience {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
 
-	private String subject;
+  private String subject;
 
-	@OneToOne(mappedBy = "endOfStudiesProject")
-	private Student student;
+  @OneToOne(mappedBy = "endOfStudiesProject")
+  private Student student;
 
-	@ManyToOne
-	private Enterprise enterprise;
+  @ManyToOne
+  private Enterprise enterprise;
 
-	private String supervisor;
+  private String supervisor;
 
-	private boolean remuneration;
+  private boolean remuneration;
 
-	private boolean preEmployment;
+  private boolean preEmployment;
 
-	private String job;
+  private String job;
 
-	private String technologies;
+  @OneToMany
+  private List<Technology> technologies;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date startDate;
+  @OneToMany
+  private Set<Document> documents;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date endDate;
+  @Temporal(TemporalType.DATE)
+  private Date defenseDate;
 
-	public Internship() {
-		student = new Student();
-		enterprise = new Enterprise();
-	}
+  private LocalDate startDate;
 
-	public Internship(Integer id, String subject, Student student, Enterprise enterprise, String technologies,
-			Date startDate, Date endDate) {
-		super();
-		this.id = id;
-		this.subject = subject;
-		this.student = student;
-		this.enterprise = enterprise;
-		this.technologies = technologies;
-		this.startDate = startDate;
-		this.endDate = endDate;
-	}
+  private LocalDate endDate;
 
-	public Integer getId() {
-		return id;
-	}
+  @ElementCollection
+  private List<String> jury;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+  private double mark;
 
-	public String getSubject() {
-		return subject;
-	}
+  public Internship() {
+  }
 
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
+  public Internship(Integer id, String subject, Student student, Enterprise enterprise,
+      String supervisor,
+      boolean remuneration, boolean preEmployment, String job, List<Technology> technologies,
+      LocalDate startDate,
+      LocalDate endDate) {
+    super();
+    this.subject = subject;
+    this.student = student;
+    this.enterprise = enterprise;
+    this.supervisor = supervisor;
+    this.remuneration = remuneration;
+    this.preEmployment = preEmployment;
+    this.job = job;
+    this.technologies = technologies;
+    this.startDate = startDate;
+    this.endDate = endDate;
+  }
 
-	public Student getStudent() {
-		return student;
-	}
+  public Integer getId() {
+    return id;
+  }
 
-	public void setStudent(Student student) {
-		this.student = student;
-	}
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-	public Enterprise getEnterprise() {
-		return enterprise;
-	}
+  public String getSubject() {
+    return subject;
+  }
 
-	public void setEnterprise(Enterprise enterprise) {
-		this.enterprise = enterprise;
-	}
+  public void setSubject(String subject) {
+    this.subject = subject;
+  }
 
-	public String getSupervisor() {
-		return supervisor;
-	}
+  public Student getStudent() {
+    return student;
+  }
 
-	public void setSupervisor(String supervisor) {
-		this.supervisor = supervisor;
-	}
+  public void setStudent(Student student) {
+    this.student = student;
+  }
 
-	public boolean isRemuneration() {
-		return remuneration;
-	}
+  public Enterprise getEnterprise() {
+    return enterprise;
+  }
 
-	public void setRemuneration(boolean remuneration) {
-		this.remuneration = remuneration;
-	}
+  public void setEnterprise(Enterprise enterprise) {
+    this.enterprise = enterprise;
+  }
 
-	public boolean isPreEmployment() {
-		return preEmployment;
-	}
+  public String getSupervisor() {
+    return supervisor;
+  }
 
-	public void setPreEmployment(boolean preEmployment) {
-		this.preEmployment = preEmployment;
-	}
+  public void setSupervisor(String supervisor) {
+    this.supervisor = supervisor;
+  }
 
-	public String getJob() {
-		return job;
-	}
+  public boolean isRemuneration() {
+    return remuneration;
+  }
 
-	public void setJob(String job) {
-		this.job = job;
-	}
+  public void setRemuneration(boolean remuneration) {
+    this.remuneration = remuneration;
+  }
 
-	public String getTechnologies() {
-		return technologies;
-	}
+  public boolean isPreEmployment() {
+    return preEmployment;
+  }
 
-	public void setTechnologies(String technologies) {
-		this.technologies = technologies;
-	}
+  public void setPreEmployment(boolean preEmployment) {
+    this.preEmployment = preEmployment;
+  }
 
-	public Date getStartDate() {
-		return startDate;
-	}
+  public String getJob() {
+    return job;
+  }
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
+  public void setJob(String job) {
+    this.job = job;
+  }
 
-	public Date getEndDate() {
-		return endDate;
-	}
+  public List<Technology> getTechnologies() {
+    return technologies;
+  }
 
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
+  public void setTechnologies(List<Technology> technologies) {
+    this.technologies = technologies;
+  }
 
-	@Override
-	public String toString() {
-		return "Internship [id=" + id + ", subject=" + subject + ", student=" + student + ", enterprise=" + enterprise
-				+ "]";
-	}
+  public LocalDate getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(LocalDate startDate) {
+    this.startDate = startDate;
+  }
+
+  public LocalDate getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(LocalDate endDate) {
+    this.endDate = endDate;
+  }
+
+  public Set<Document> getDocuments() {
+    return documents;
+  }
+
+  public void setDocuments(Set<Document> documents) {
+    this.documents = documents;
+  }
+
+  public Date getDefenseDate() {
+    return defenseDate;
+  }
+
+  public void setDefenseDate(Date defenseDate) {
+    this.defenseDate = defenseDate;
+  }
+
+  public List<String> getJury() {
+    return jury;
+  }
+
+  public void setJury(List<String> jury) {
+    this.jury = jury;
+  }
+
+  public double getMark() {
+    return mark;
+  }
+
+  public void setMark(double mark) {
+    this.mark = mark;
+  }
+
+  @Override
+  public String toString() {
+    return "Internship [id=" + id + ", subject=" + subject + ", student=" + student
+        + ", enterprise=" + enterprise
+        + "]";
+  }
 }
