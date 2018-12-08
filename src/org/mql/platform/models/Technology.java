@@ -7,6 +7,7 @@ import javax.persistence.Id;
 
 /**
  * @author chermehdi
+ * @author anouarma
  */
 @Entity
 public class Technology {
