@@ -1,13 +1,7 @@
 package org.mql.platform.models;
 
 import java.time.LocalDate;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author chermehdi
@@ -19,12 +13,10 @@ import javax.persistence.Table;
  * </pr>
  */
 @Entity
-@Table(name = "MQL_EXPERIENCE")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Experience {
+public class Experiment {
 
   @Id
-  @GeneratedValue(generator = "experience", strategy = GenerationType.TABLE)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   protected Integer id;
 
   private String description;
@@ -32,6 +24,15 @@ public abstract class Experience {
   private LocalDate start;
 
   private LocalDate end;
+
+  @ManyToOne
+  private Enterprise entreprise;
+
+  @ManyToOne
+  private Laureate laureate;
+
+  public Experiment() {
+  }
 
   public Integer getId() {
     return id;
@@ -65,4 +66,11 @@ public abstract class Experience {
     this.end = end;
   }
 
+  public Enterprise getEntreprise() {return entreprise;}
+
+  public void setEntreprise(Enterprise entreprise) {this.entreprise = entreprise;}
+
+  public Laureate getLaureate() {return laureate;}
+
+  public void setLaureate(Laureate laureate) {this.laureate = laureate; }
 }
