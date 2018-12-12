@@ -1,10 +1,8 @@
 package org.mql.platform.models;
 
 import java.time.LocalDate;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.List;
+import javax.persistence.*;
 
 /**
  * @author chermehdi
@@ -26,6 +24,9 @@ public class Education {
   private LocalDate start;
 
   private LocalDate end;
+
+  @ManyToMany(mappedBy = "educations")
+  private List<Laureate> laureates;
 
   public Education() {
   }
@@ -78,4 +79,7 @@ public class Education {
     this.end = end;
   }
 
+  public List<Laureate> getLaureates() {return laureates;}
+
+  public void setLaureates(List<Laureate> laureates) {this.laureates = laureates;}
 }

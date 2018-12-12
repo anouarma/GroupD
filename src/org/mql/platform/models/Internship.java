@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
  * @author YassirSalih
  */
 @Entity
-public class Internship extends Experience {
+public class Internship extends Experiment {
 
   private String subject;
 
