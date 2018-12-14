@@ -1,76 +1,122 @@
 package org.mql.platform.models;
 
 import java.time.LocalDate;
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * @author chermehdi
  * @author anouarma
  *
- * <pr>
- * PS: maybe the name experience is a reserved word in hibernate it caused problems, so we needed to
- * change the name of the table explicitely
- * </pr>
+ *         <pr> PS: maybe the name experience is a reserved word in hibernate it
+ *         caused problems, so we needed to change the name of the table
+ *         explicitely </pr>
+ */
+
+/**
+ * @author Mesbahi
+ *	so i leave Intership class because experience not always an intership it may be a challenge or something else
  */
 @Entity
 public class Experiment {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	protected Long id;
+	private LocalDate start;
+	private LocalDate end;
+	private String postOccuped;
+	private String city;
+	private String activitySector;
+	private String postDescription;
+	private String contry;
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  protected Integer id;
+	public Experiment(Long id, LocalDate start, LocalDate end, String postOccuped, String city, String activitySector,
+			String postDescription, String contry) {
+		super();
+		this.id = id;
+		this.start = start;
+		this.end = end;
+		this.postOccuped = postOccuped;
+		this.city = city;
+		this.activitySector = activitySector;
+		this.postDescription = postDescription;
+		this.contry = contry;
+	}
 
-  private String description;
+	public Experiment() {
+	}
 
-  private LocalDate start;
+	public Long getId() {
+		return id;
+	}
 
-  private LocalDate end;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-  @ManyToOne
-  private Enterprise entreprise;
+	public LocalDate getStart() {
+		return start;
+	}
 
-  @ManyToOne
-  private Laureate laureate;
+	public void setStart(LocalDate start) {
+		this.start = start;
+	}
 
-  public Experiment() {
-  }
+	public LocalDate getEnd() {
+		return end;
+	}
 
-  public Integer getId() {
-    return id;
-  }
+	public void setEnd(LocalDate end) {
+		this.end = end;
+	}
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
+	public String getPostOccuped() {
+		return postOccuped;
+	}
 
-  public String getDescription() {
-    return description;
-  }
+	public void setPostOccuped(String postOccuped) {
+		this.postOccuped = postOccuped;
+	}
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	public String getCity() {
+		return city;
+	}
 
-  public LocalDate getStart() {
-    return start;
-  }
+	public void setCity(String city) {
+		this.city = city;
+	}
 
-  public void setStart(LocalDate start) {
-    this.start = start;
-  }
+	public String getActivitySector() {
+		return activitySector;
+	}
 
-  public LocalDate getEnd() {
-    return end;
-  }
+	public void setActivitySector(String activitySector) {
+		this.activitySector = activitySector;
+	}
 
-  public void setEnd(LocalDate end) {
-    this.end = end;
-  }
+	public String getPostDescription() {
+		return postDescription;
+	}
 
-  public Enterprise getEntreprise() {return entreprise;}
+	public void setPostDescription(String postDescription) {
+		this.postDescription = postDescription;
+	}
 
-  public void setEntreprise(Enterprise entreprise) {this.entreprise = entreprise;}
+	public String getContry() {
+		return contry;
+	}
 
-  public Laureate getLaureate() {return laureate;}
+	public void setContry(String contry) {
+		this.contry = contry;
+	}
 
-  public void setLaureate(Laureate laureate) {this.laureate = laureate; }
+	@Override
+	public String toString() {
+		return "Experiment [id=" + id + ", start=" + start + ", end=" + end + ", postOccuped=" + postOccuped + ", city="
+				+ city + ", activitySector=" + activitySector + ", postDescription=" + postDescription + ", contry="
+				+ contry + "]";
+	}
 }
