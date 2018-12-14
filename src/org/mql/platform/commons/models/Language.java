@@ -1,4 +1,4 @@
-package org.mql.platform.models;
+package org.mql.platform.commons.models;
 
 /**
  * @author mehdithe

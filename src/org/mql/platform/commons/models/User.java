@@ -1,4 +1,4 @@
-package org.mql.platform.models;
+package org.mql.platform.commons.models;
 
 import java.util.Set;
 
@@ -13,6 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+
+import org.mql.platform.models.Address;
+import org.mql.platform.models.Gender;
+import org.mql.platform.models.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

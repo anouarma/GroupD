@@ -1,6 +1,9 @@
 package org.mql.platform.models;
 
 import javax.persistence.*;
+
+import org.mql.platform.postMql.models.Laureate;
+
 import java.util.List;
 
 /**

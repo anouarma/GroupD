@@ -1,7 +1,8 @@
 package org.mql.platform.business.projects;
 
 import java.util.Set;
-import org.mql.platform.models.Document;
+
+import org.mql.platform.commons.models.Document;
 import org.mql.platform.models.Project;
 import org.mql.platform.models.Team;
 

@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import org.mql.platform.commons.models.User;
+
 /**
  * @author mehdithe
  */

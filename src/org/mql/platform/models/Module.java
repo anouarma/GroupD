@@ -12,6 +12,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.mql.platform.commons.models.Document;
+
 /**
  * @author mehdithe
  */

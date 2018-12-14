@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import org.mql.platform.commons.models.User;
+
 /**
  * @author mehdithe
  */
