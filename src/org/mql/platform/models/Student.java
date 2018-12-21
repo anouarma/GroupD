@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToOne;
 
-import org.mql.platform.commons.models.User;
-
 /**
  * @author mehdithe
  */

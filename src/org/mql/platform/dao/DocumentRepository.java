@@ -1,6 +1,6 @@
 package org.mql.platform.dao;
 
-import org.mql.platform.commons.models.Document;
+import org.mql.platform.models.Document;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
