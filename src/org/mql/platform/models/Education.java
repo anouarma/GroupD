@@ -7,38 +7,75 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
 /**
  * @author chermehdi
  * @author anouarma
  */
-
-/**
- * @author Mesbahi Add Lombok project to generate for us getters and setters
- *         builder equals hashcode and so on used in order to make entity more
- *         visible
- */
-
-@Data @ToString @Builder @AllArgsConstructor @NoArgsConstructor
 @Entity
 public class Education {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
 
-	private String label;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-	private String place;
+  private String label;
 
-	private String city;
+  private String place;
 
-	private LocalDate start;
+  private String city;
+  
+  private LocalDate start;
 
-	private LocalDate end;
+  private LocalDate end;
 
+  public Education() {
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public String getLabel() {
+    return label;
+  }
+
+  public void setLabel(String label) {
+    this.label = label;
+  }
+
+  public String getPlace() {
+    return place;
+  }
+
+  public void setPlace(String place) {
+    this.place = place;
+  }
+
+  public String getCity() {
+    return city;
+  }
+
+  public void setCity(String city) {
+    this.city = city;
+  }
+
+  public LocalDate getStart() {
+    return start;
+  }
+
+  public void setStart(LocalDate start) {
+    this.start = start;
+  }
+
+  public LocalDate getEnd() {
+    return end;
+  }
+
+  public void setEnd(LocalDate end) {
+    this.end = end;
+  }
 }
