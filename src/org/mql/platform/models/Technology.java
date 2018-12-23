@@ -1,7 +1,9 @@
 package org.mql.platform.models;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * @author chermehdi
@@ -12,21 +14,18 @@ public class Technology {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private Long id;
 
   private String label;
-
-  @ManyToMany(mappedBy = "technologies")
-  private List<Laureate> laureates;
 
   public Technology() {
   }
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -37,8 +36,4 @@ public class Technology {
   public void setLabel(String label) {
     this.label = label;
   }
-
-  public List<Laureate> getLaureates() {return laureates;}
-
-  public void setLaureates(List<Laureate> laureates) {this.laureates = laureates;}
 }

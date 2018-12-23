@@ -1,7 +1,7 @@
 package org.mql.platform.models;
 
-import java.util.List;
 import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -12,7 +12,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -21,7 +20,7 @@ public abstract class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.TABLE)
-  private Integer id;
+  private Long id;
 
   @ManyToMany
   @JoinTable(
@@ -47,11 +46,11 @@ public abstract class User {
   @OneToOne
   private Address address;
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

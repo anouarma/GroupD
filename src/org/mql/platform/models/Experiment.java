@@ -1,76 +1,133 @@
 package org.mql.platform.models;
 
 import java.time.LocalDate;
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * @author chermehdi
  * @author anouarma
  *
- * <pr>
- * PS: maybe the name experience is a reserved word in hibernate it caused problems, so we needed to
- * change the name of the table explicitely
- * </pr>
+ *         <pr> PS: maybe the name experience is a reserved word in hibernate it
+ *         caused problems, so we needed to change the name of the table
+ *         explicitely </pr>
+ */
+
+/**
+ * @author Mesbahi
+ *	so i leave Longership class because experience not always an Longership it may be a challenge or something else
  */
 @Entity
 public class Experiment {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	protected Long id;
+	private LocalDate start;
+	private LocalDate end;
+	private String postOccuped;
+	@OneToMany
+	private Enterprise enterprise;
+	private String city;
+	private String contry;
+	private String activitySector;
+	private String postDescription;
+	
+	public Experiment(LocalDate start, LocalDate end, String postOccuped, Enterprise enterprise, String city,
+			String contry, String activitySector, String postDescription) {
+		super();
+		this.start = start;
+		this.end = end;
+		this.postOccuped = postOccuped;
+		this.enterprise = enterprise;
+		this.city = city;
+		this.contry = contry;
+		this.activitySector = activitySector;
+		this.postDescription = postDescription;
+	}
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  protected Integer id;
+	public Enterprise getEnterprise() {
+		return enterprise;
+	}
 
-  private String description;
+	public void setEnterprise(Enterprise enterprise) {
+		this.enterprise = enterprise;
+	}
 
-  private LocalDate start;
+	public Experiment() {
+	}
 
-  private LocalDate end;
+	public Long getId() {
+		return id;
+	}
 
-  @ManyToOne
-  private Enterprise entreprise;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-  @ManyToOne
-  private Laureate laureate;
+	public LocalDate getStart() {
+		return start;
+	}
 
-  public Experiment() {
-  }
+	public void setStart(LocalDate start) {
+		this.start = start;
+	}
 
-  public Integer getId() {
-    return id;
-  }
+	public LocalDate getEnd() {
+		return end;
+	}
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
+	public void setEnd(LocalDate end) {
+		this.end = end;
+	}
 
-  public String getDescription() {
-    return description;
-  }
+	public String getPostOccuped() {
+		return postOccuped;
+	}
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	public void setPostOccuped(String postOccuped) {
+		this.postOccuped = postOccuped;
+	}
 
-  public LocalDate getStart() {
-    return start;
-  }
+	public String getCity() {
+		return city;
+	}
 
-  public void setStart(LocalDate start) {
-    this.start = start;
-  }
+	public void setCity(String city) {
+		this.city = city;
+	}
 
-  public LocalDate getEnd() {
-    return end;
-  }
+	public String getActivitySector() {
+		return activitySector;
+	}
 
-  public void setEnd(LocalDate end) {
-    this.end = end;
-  }
+	public void setActivitySector(String activitySector) {
+		this.activitySector = activitySector;
+	}
 
-  public Enterprise getEntreprise() {return entreprise;}
+	public String getPostDescription() {
+		return postDescription;
+	}
 
-  public void setEntreprise(Enterprise entreprise) {this.entreprise = entreprise;}
+	public void setPostDescription(String postDescription) {
+		this.postDescription = postDescription;
+	}
 
-  public Laureate getLaureate() {return laureate;}
+	public String getContry() {
+		return contry;
+	}
 
-  public void setLaureate(Laureate laureate) {this.laureate = laureate; }
+	public void setContry(String contry) {
+		this.contry = contry;
+	}
+
+	@Override
+	public String toString() {
+		return "Experiment [id=" + id + ", start=" + start + ", end=" + end + ", postOccuped=" + postOccuped + ", city="
+				+ city + ", activitySector=" + activitySector + ", postDescription=" + postDescription + ", contry="
+				+ contry + "]";
+	}
 }

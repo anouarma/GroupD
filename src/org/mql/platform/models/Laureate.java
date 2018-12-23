@@ -1,62 +1,93 @@
 package org.mql.platform.models;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+/**
+ * @author Mesbahi
+ *
+ */
 @Entity
-public class Laureate extends Student {
-    private int yearGraduation;
+// also entity Student to disscus because alerady we don't need some fields and
+// also it was icompatible with our reasoning
+public class Laureate extends User {
+	private String yearGraduation;
+	private String postOccuped;
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "laureate_technology", joinColumns = @JoinColumn(name = "laureate_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "technology_id", referencedColumnName = "id"))
+	private List<Technology> technologies = new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(
-            name = "laureate_technology",joinColumns = @JoinColumn(name = "laureate_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "technology_id", referencedColumnName = "id")
-    )
-    private List<Technology> technologies = new ArrayList<>();
+	// to discuss
+	// @JoinTable(name = "laureate_education", joinColumns = @JoinColumn(name =
+	// "laureate_id", referencedColumnName = "id"), inverseJoinColumns =
+	// @JoinColumn(name = "education_id", referencedColumnName = "id"))
+	@OneToMany
+	private List<Education> educations = new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(
-            name = "laureate_education",joinColumns = @JoinColumn(name = "laureate_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "education_id", referencedColumnName = "id")
-    )
-    private List<Education> educations = new ArrayList<>();
+	@OneToMany
+	private List<Document> attachments = new ArrayList<>();
 
-    @OneToMany(mappedBy = "laureate")
-    private List<Experiment> experiments = new ArrayList<>();
+	@ElementCollection(targetClass = Language.class)
+	@CollectionTable(name = "languages", joinColumns = @JoinColumn(name = "laureateId"))
+	@Column(name = "language")
+	@Enumerated(EnumType.STRING)
+	private List<Language> languages;
+	@OneToMany
+	private List<Experiment> experiments = new ArrayList<>();
 
-    public Laureate() {
-    }
+	public String getYearGraduation() {
+		return yearGraduation;
+	}
 
-    public int getYearGraduation() {
-        return yearGraduation;
-    }
+	public void setYearGraduation(String yearGraduation) {
+		this.yearGraduation = yearGraduation;
+	}
 
-    public void setYearGraduation(int yearGraduation) {
-        this.yearGraduation = yearGraduation;
-    }
 
-    public List<Technology> getTechnologies() {
-        return technologies;
-    }
+	public Laureate() {
+	}
 
-    public void setTechnologies(List<Technology> technologies) {
-        this.technologies = technologies;
-    }
+	public List<Technology> getTechnologies() {
+		return technologies;
+	}
 
-    public List<Education> getEducations() {
-        return educations;
-    }
+	public void setTechnologies(List<Technology> technologies) {
+		this.technologies = technologies;
+	}
 
-    public void setEducations(List<Education> educations) {
-        this.educations = educations;
-    }
+	public List<Education> getEducations() {
+		return educations;
+	}
 
-    public List<Experiment> getExperiments() {
-        return experiments;
-    }
+	public void setEducations(List<Education> educations) {
+		this.educations = educations;
+	}
 
-    public void setExperiments(List<Experiment> experiments) {
-        this.experiments = experiments;
-    }
+	public List<Experiment> getExperiments() {
+		return experiments;
+	}
+
+	public void setExperiments(List<Experiment> experiments) {
+		this.experiments = experiments;
+	}
+
+	public String getPostOccuped() {
+		return postOccuped;
+	}
+
+	public void setPostOccuped(String postOccuped) {
+		this.postOccuped = postOccuped;
+	}
 }

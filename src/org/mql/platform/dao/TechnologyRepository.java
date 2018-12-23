@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * @author chermehdi
  */
-public interface TechnologyRepository extends JpaRepository<Technology, Integer> {
+public interface TechnologyRepository extends JpaRepository<Technology, Long> {
 
 }
