@@ -74,11 +74,11 @@ public class Internship extends Experiment {
     this.endDate = endDate;
   }
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

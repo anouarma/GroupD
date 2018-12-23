@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * @author chermehdi
@@ -18,7 +19,7 @@ import javax.persistence.Id;
 
 /**
  * @author Mesbahi
- *	so i leave Intership class because experience not always an intership it may be a challenge or something else
+ *	so i leave Longership class because experience not always an Longership it may be a challenge or something else
  */
 @Entity
 public class Experiment {
@@ -28,22 +29,32 @@ public class Experiment {
 	private LocalDate start;
 	private LocalDate end;
 	private String postOccuped;
+	@OneToMany
+	private Enterprise enterprise;
 	private String city;
+	private String contry;
 	private String activitySector;
 	private String postDescription;
-	private String contry;
-
-	public Experiment(Long id, LocalDate start, LocalDate end, String postOccuped, String city, String activitySector,
-			String postDescription, String contry) {
+	
+	public Experiment(LocalDate start, LocalDate end, String postOccuped, Enterprise enterprise, String city,
+			String contry, String activitySector, String postDescription) {
 		super();
-		this.id = id;
 		this.start = start;
 		this.end = end;
 		this.postOccuped = postOccuped;
+		this.enterprise = enterprise;
 		this.city = city;
+		this.contry = contry;
 		this.activitySector = activitySector;
 		this.postDescription = postDescription;
-		this.contry = contry;
+	}
+
+	public Enterprise getEnterprise() {
+		return enterprise;
+	}
+
+	public void setEnterprise(Enterprise enterprise) {
+		this.enterprise = enterprise;
 	}
 
 	public Experiment() {
